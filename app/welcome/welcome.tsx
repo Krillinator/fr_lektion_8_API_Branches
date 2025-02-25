@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
+import { ProductCard } from "~/components/ProductCard"
 import type { Product } from "~/types/Product"
 
-// TODO - #2 Display Result in VIEW (<div>)
+// TODO - #3 - Transfer HTML to Component --> for the loop section
 
 export function Welcome() {
   const [productList, setProductList] = useState<Product[]>([
@@ -11,7 +12,8 @@ export function Welcome() {
       price: 0,
       description: "",
       category: "",
-      image: "",
+      image:
+        "https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg",
       rating: {
         rate: 0,
         count: 0,
@@ -34,21 +36,30 @@ export function Welcome() {
     fetchData()
   }, []) // RUN ONCE
 
+  // TODO - Sort list after price
+  function sortProductListAfterPrice() {
+    const sortedProductListAfterPrice: Product[] = []
+
+    for (let i = 0; i < productList.length; i++) {}
+
+    setProductList(sortedProductListAfterPrice)
+  }
+
   return (
     <div>
       {/* Loop Through Products */}
       {productList.map(
         ({ id, title, price, description, category, image, rating }) => (
-          <div>
-            <p>id: {id}</p>
-            <p>title: {title}</p>
-            <p>price: {price}</p>
-            <p>description: {description}</p>
-            <p>category: {category}</p>
-            <p>image: {image}</p>
-            <p>rating count: {rating.count}</p>
-            <p>rating rate: {rating.rate}</p>
-          </div>
+          <ProductCard
+            key={id} // React needs the KEY
+            id={id}
+            title={title}
+            price={price}
+            description={description}
+            category={category}
+            image={image}
+            rating={rating}
+          />
         )
       )}
     </div>
