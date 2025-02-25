@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import { ProductCard } from "~/components/ProductCard"
 import type { Product } from "~/types/Product"
 
-// TODO - #3 - Transfer HTML to Component --> for the loop section
-
 export function Welcome() {
   const [productList, setProductList] = useState<Product[]>([
     {
